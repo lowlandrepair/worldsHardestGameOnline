@@ -2,8 +2,7 @@
 pygame-menu
 https://github.com/ppizarror/pygame-menu
 
-EXAMPLE - MULTI-INPUT
-Shows different inputs (widgets).
+
 """
 
 __all__ = ['main']
@@ -15,7 +14,6 @@ from pygame_menu.examples import create_example_window
 from typing import Tuple, Optional
 
 import client_single
-import client_multi
 # Constants and global variables
 FPS = 60
 WINDOW_SIZE = (1280, 720)
@@ -34,7 +32,6 @@ def main_background() -> None:
     """
     surface.fill((255, 0, 0))
 
-
 def check_name_test(value: str) -> None:
     """
     This function tests the text input widget.
@@ -42,6 +39,7 @@ def check_name_test(value: str) -> None:
     :param value: The widget value
     """
     print(f'User name: {value}')
+
 
 
 def main(test: bool = False) -> None:
@@ -306,56 +304,7 @@ def main(test: bool = False) -> None:
         align=pygame_menu.locals.ALIGN_CENTER
     )
 
-    # -------------------------------------------------------------------------
-    # Create menus: Multiplayer
-    # -------------------------------------------------------------------------
-    multi_player_menu = pygame_menu.Menu(
-        height=WINDOW_SIZE[1],
-        theme=settings_menu_theme,
-        title='Multiplayer',
-        width=WINDOW_SIZE[0]
-    )
-
-    def join() -> None:
-        global level
-        data = multi_player_menu.get_input_data()
-        code = data['code']
-        if code:
-            client_multi.set_network(['join', code])
-            client_multi.play_multi()
-
-    def host() -> None:
-        global level
-        client_multi.set_network('host')
-        client_multi.play_multi()
-
-    multi_player_menu.add.button(
-        'Host',
-        host,
-        align=pygame_menu.locals.ALIGN_CENTER
-    )
-    multi_player_menu.add.vertical_margin(50)
-    multi_player_menu.add.text_input(
-        'Lobby Code: ',
-        maxchar=6,
-        maxwidth=6,
-        textinput_id='code',
-        input_type=pygame_menu.locals.INPUT_INT,
-        cursor_selection_enable=False,
-        align=pygame_menu.locals.ALIGN_CENTER
-    )
-    multi_player_menu.add.button(
-        'Join',
-        join,
-        align=pygame_menu.locals.ALIGN_CENTER
-    )
-
-    multi_player_menu.add.vertical_margin(50)
-    multi_player_menu.add.button(
-        'Return to main menu',
-        pygame_menu.events.BACK,
-        align=pygame_menu.locals.ALIGN_CENTER
-    )
+    
 
     # -------------------------------------------------------------------------
     # Create menus: Main menu
@@ -375,9 +324,8 @@ def main(test: bool = False) -> None:
 
     main_menu.add.button('Single Player', single_player_menu)
     main_menu.add.vertical_margin(25)
-    main_menu.add.button('Multiplayer', multi_player_menu)
-    main_menu.add.vertical_margin(25)
-    # main_menu.add.button('bruh', settings_menu)
+  
+    # main_menu.add.button('brooo', settings_menu)
     main_menu.add.button('Quit', pygame_menu.events.EXIT)
 
     # -------------------------------------------------------------------------
@@ -400,6 +348,6 @@ def main(test: bool = False) -> None:
         if test:
             break
 
-
+  #code is running or not
 if __name__ == '__main__':
     main()

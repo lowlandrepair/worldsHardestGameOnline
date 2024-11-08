@@ -7,7 +7,7 @@ class Coin:
         self.y = y
         self.radius = 12
         self.color1 = (0, 0, 0)
-        self.color2 = (255, 255, 0)
+        self.color2 = (355, 355, 0)
         self.hitbox = pygame.Rect(self.x-10, self.y-10, 20, 20)
         self.collected = False
 
