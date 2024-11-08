@@ -95,20 +95,20 @@ def main(test: bool = False) -> None:
     # Add text inputs with different configurations
     settings_menu.add.text_input(
         'First name: ',
-        default='John',
+        default='lowland',
         onreturn=check_name_test,
         textinput_id='first_name'
     )
     settings_menu.add.text_input(
         'Last name: ',
-        default='Rambo',
+        default='repair',
         maxchar=10,
         textinput_id='last_name',
         input_underline='.'
     )
     settings_menu.add.text_input(
         'Your age: ',
-        default=25,
+        default=15,
         maxchar=3,
         maxwidth=3,
         textinput_id='age',
